@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Carta de Amor</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .carta {
+      max-width: 800px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      line-height: 1.8;
+      font-size: 1.2em;
+      animation: fadeIn 3s ease;
+    }
+    h1 {
+      text-align: center;
+      color: #ffccff;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff66cc;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    /* Efecto de estrellas */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: transparent;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <div class="carta">
+    <h1>Mi vida</h1>
+    <p>Hoy me desperté con el alma temblando, con el corazón desbocado y con los labios ardiendo como si hubiera estado besándote toda la noche...</p>
+    <p>[👉 Aquí sigue toda tu carta completa que me pasaste]</p>
+  </div>
+
+  <!-- Música -->
+  <audio id="miAudio" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    // Generar estrellas dinámicas
+    const numStars = 100;
+    const starsContainer = document.querySelector('.stars');
+    for(let i=0; i<numStars; i++){
+      let star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDuration = (1 + Math.random() * 2) + "s";
+      starsContainer.appendChild(star);
+    }
+
+    // Activar música al primer clic
+    document.body.addEventListener("click", function() {
+      const audio = document.getElementById("miAudio");
+      audio.volume = 0.5;
+      audio.play();
+    }, {once:true});
+  </script>
+</body>
+</html>
